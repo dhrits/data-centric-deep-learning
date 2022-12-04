@@ -156,7 +156,7 @@ def predict(request: Request, body: InferenceInput):
     # --
     # probs: torch.Tensor (shape: 1x10)
     # ================================
-    probs = torch.nn.functional.softmax(logits)
+    probs = torch.nn.functional.softmax(logits, dim=-1)
     probs = probs.squeeze(0)        # squeeze to (10) shape
     probs = probs.numpy().tolist()  # convert tensor to list
 
